@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let TV = function (chanel, volumn) {
+        this.chanel = chanel;
+        this.volumn = volumn;
+        this.status = false;
+        this.chanel_now = function () {
+            if (this.status===true) {
+                alert(this.chanel);
+            } else {
+                alert("TV đang tắt");
+            }
+        };
+        this.volumn_now = function () {
+            if (this.status === true) {
+                alert(this.volumn);
+            } else {
+                alert("TV đang tắt");
+            }
+        };
+    };
+    let Remote = function (ma) {
+        this.code = ma;
+        this.remoteChanel = function (tv, chanel) {
+            tv.chanel = chanel;
+        };
+        this.remoteVolumnUp = function (tv) {
+            tv.volumn += 1;
+        };
+        this.remoteVolumnDown = function (tv) {
+            tv.volumn -= 1;
+        };
+        this.turnOn = function (tv) {
+            tv.status = true;
+        };
+        this.turnOff = function (tv) {
+            tv.status = false;
+        };
+    };
+    let tv = new TV (7,20);
+    let remote = new Remote(3);
+    remote.turnOn(tv);
+    tv.chanel_now();
+    tv.volumn_now();
+    remote.remoteChanel(tv,3);
+    tv.chanel_now();
+    remote.remoteVolumnDown(tv);
+    tv.volumn_now();
+    remote.remoteVolumnUp(tv);
+    tv.volumn_now();
+    remote.turnOff(tv);
+</script>
+</body>
+</html>
